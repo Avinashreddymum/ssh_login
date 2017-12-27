@@ -1,0 +1,187 @@
+#!/usr/bin/env expect
+set file [lindex $argv 0]
+if {[llength $argv] == 0} {
+  puts stderr "Usage: $argv0 file"
+  exit 1
+}
+set timeout 12
+set date [exec date "+%d-%B-%Y"]
+#spawn sh -c "cp -rf /opt/Resource_Report/isilon_storage/script/config-org ~/.ssh/config"
+spawn sh -c "cd /opt/Resource_Report/isilon_storage/script/"
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no va1ap-hostname < ./isi.py > /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no va1bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no sy1ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no fd2ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no fd2bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no ff1ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no ff1bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no os5ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no os5bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no sg2ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no sg2bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no kw1ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no kw1bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no lo8ap-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no hh3bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
+
+spawn sh -c "ssh -o StrictHostKeyChecking=no hh3bp-hostname < ./isi.py >> /opt/Resource_Report/isilon/isilon-$file-$date.txt"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "password\r"
+expect "Password:"
+send "daspassword\r"
+interact
