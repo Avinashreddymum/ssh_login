@@ -1,0 +1,109 @@
+#!/usr/bin/expect
+set file [lindex $argv 0]
+if {[llength $argv] == 0} {
+  puts stderr "Usage: $argv0 file"
+  exit 1
+}
+#find /path/to/files -type f -mtime +10 -delete
+set date [clock format [clock seconds] -format "%d-%B-%Y"]
+set date [exec date "+%d-%B-%Y"]
+#set currentdate [exec date "+%d"]
+
+#spawn sh -c "yes | cp -ifr /opt/Resource_Report/vs-hv/script/VS-HV-config ~/.ssh/config"
+set timeout 5
+spawn sh -c "touch /resource_monitoring/vs-hv-report-$file-$date.csv"
+
+spawn sh -c "ssh lo8nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" > /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh sy1nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh ff1nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh os5nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh fd2nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh va1nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh sg2nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+spawn sh -c "ssh kw1nv-hostname \"./bin/show_hypervisorinfo.py | grep total -A15 | grep -v ^+ | grep -v ^- | sed 's/total.*//g'\" >> /opt/Resource_Report/VHS/vs-hv-report-$file-$date.csv"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Enter passphrase for key '/root/.ssh/id_rsa':"
+send "passwd\r"
+expect "Password:"
+send "passwd\r"
+interact
+
+#set timeout 5
+#spawn sh -c "cd /root/vs-hv/script/"
+#set timeout 3
+#exec ./format-VS-HV.sh > /root/vs-hv/data_output/vs-hv-output-$file-$date.csv
+#set timeout 3
+#unix2dos /resource_monitoring/22-September-2017.csv
